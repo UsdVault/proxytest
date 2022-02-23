@@ -18,7 +18,7 @@ var server = http.createServer(function (req, res) {
   if (req.headers.host === "india.server.usdvault.com:5050") {
     proxy.web(req, res, { target: "http://127.0.0.1:5001" });
   } else {
-    return "Bad Request";
+    res.end("Not found");
   }
 });
 
