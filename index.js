@@ -15,7 +15,11 @@ var server = http.createServer(function (req, res) {
   // You can define here your custom logic to handle the request
   // and then proxy the request.
   console.log("req ", req.headers.host);
-  proxy.web(req, res, { target: "http://127.0.0.1:5001" });
+  if (req.headers.host === "india.server.usdvault.com:5050") {
+    proxy.web(req, res, { target: "http://127.0.0.1:5001" });
+  } else {
+    return "Bad Request";
+  }
 });
 
 console.log("listening on port 5050");
